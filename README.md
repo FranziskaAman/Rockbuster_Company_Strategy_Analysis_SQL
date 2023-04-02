@@ -1,2 +1,18 @@
-# Rockbuster_Company_Strategy_Analysis_SQL
+# Rockbuster Company Strategy Analysis 
+
+## Motivation 
 Rockbuster Stealth LLC i s a movie rental company that used to have stores around the world. Facing stiff competition from streaming services such as Netflix and Amazon Prime, the Rockbuster Stealth management team is planning to use its existing movie licenses to launch an online video rental service in order to stay competitive.
+
+## Objective
+Answer the Key Questions of Rockbuster Stealth Management Board.
+
+### Customer Setup:
+Which countries are Rockbuster customers based in?
+Where are customers with a high l ifetime value based?
+
+### Sales Figures:
+Which movies contributed the most/least to revenue gain?
+Do sales figures vary between geographic regions?
+
+### Rental Duration:
+What was the average rental duration for all videos?
