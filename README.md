@@ -16,3 +16,6 @@ Do sales figures vary between geographic regions?
 
 ### Rental Duration:
 What was the average rental duration for all videos?
+
+## Data
+The following [data set](https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/customers.zip) was used for analysis.
