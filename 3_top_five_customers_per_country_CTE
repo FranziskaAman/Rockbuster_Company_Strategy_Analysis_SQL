@@ -1,0 +1,35 @@
+WITH top_5_customers (customer_id_top, first_name, last_name, city, country, total_revenue) AS
+	   (SELECT B.customer_id,
+		   B.first_name,
+		   B.last_name,
+		   D.city,
+		   E.country,
+			SUM(amount) AS total_revenue
+			FROM payment A
+			INNER JOIN customer B ON A.customer_id = B.customer_id
+			INNER JOIN address C ON B.address_id = C.address_id
+			INNER JOIN city D on C.city_id = D.city_id
+			INNER JOIN country E on D.country_id = E.country_id
+			WHERE d.city IN ('Aurora', 'Acua', 'Citrus Heights', 'Iwaki', 'Ambattur', 'Shanwei',  'So Leopoldo', 'Teboksary', 'Tianjin', 'Cianjur')
+			GROUP BY B.customer_id, D.city, E.country
+			ORDER BY total_revenue DESC
+	   LIMIT 5), 
+	   
+	  all_customers(country_all, all_customers_count) AS
+	   (SELECT DISTINCT E.country,
+        COUNT(A.customer_id) AS all_customers_count
+	    FROM customer A
+		INNER JOIN customer B ON A.customer_id = B.customer_id
+		INNER JOIN address C ON B.address_id = C.address_id
+		INNER JOIN city D on C.city_id = D.city_id
+		INNER JOIN country E on D.country_id = E.country_id
+	   GROUP BY E.country
+	   ORDER BY E.country DESC)
+	   
+SELECT DISTINCT all_customers.country_all,
+       COUNT(DISTINCT top_5_customers.customer_id_top) AS top_customers_count,
+	   all_customers.all_customers_count 
+FROM top_5_customers
+RIGHT JOIN all_customers ON top_5_customers.country = all_customers.country_all
+GROUP BY all_customers.country_all, all_customers_count
+ORDER BY all_customers.country_all ASC
